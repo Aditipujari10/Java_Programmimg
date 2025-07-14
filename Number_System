@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Number_System {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	    System.out.println("Enter Number : ");
+	    int number = sc.nextInt();
+	    System.out.println("Given Number : " + number);
+	    
+	    String binary = Integer.toBinaryString(number);
+	    System.out.println("Binary equivalent : " + binary);
+	    
+	    String octal = Integer.toOctalString(number);
+	    System.out.println("Octal equivalent : " + octal);
+	    
+	    String hex = Integer.toHexString(number);
+	    System.out.println("Hexadecimal equivalent : " + hex);
+
+	}
+
+}
