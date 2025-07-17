@@ -1,5 +1,5 @@
 
-public class Assignment01_C {
+public class Pattren{
     public static void main(String[] args) {
         int rows = 5; 
 
