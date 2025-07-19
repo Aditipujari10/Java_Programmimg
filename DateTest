@@ -1,0 +1,13 @@
+package Assignment2;
+
+public class DateTest {
+
+	public static void main(String[] args) {
+		DateTest dt1 = new DateTest();
+		dt1.acceptRecord();
+		dt1.printRecord();
+		
+
+	}
+
+}
