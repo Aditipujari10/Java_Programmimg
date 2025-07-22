@@ -1,0 +1,153 @@
+package com.app.fruits;
+
+import java.util.Scanner;
+
+
+public class Fruit_Main {
+	
+	public static int MenuList() {
+		Scanner sc = new Scanner(System.in);
+		int choice;
+		System.out.println("MenuList : ");
+		System.out.println("0.Exit");
+		System.out.println("1.Add Mango");
+		System.out.println("2.Add Orenge");
+		System.out.println("3.Add Apple");
+		System.out.println("4.Display names of all fruits in the basket.");
+		System.out.println("5.Display name,color,weight , taste of all fresh fruits , in the basket.");
+		System.out.println("6.Mark a fruit as stale ");
+		System.out.println("7.Display tastes of all stale(not fresh) fruits in the basket.");
+		System.out.println("Enter your choice : ");
+		choice = sc.nextInt();
+		return choice;
+	}
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter number of fruits : ");
+		int n = sc.nextInt();
+		
+		Fruit[] basket = new Fruit[n];
+		int counter=0;	
+		
+		int choice;
+		while((choice = MenuList())!=0) {
+			Fruit f = null;
+			switch(choice) {
+			case 0 : 
+				System.out.println("Exit...!!");
+				
+			case 1:{
+				if(counter < basket.length) {
+					
+					System.out.println("Enter Fruit color : ");
+					String color = sc.next();
+				
+					System.out.println("Enter Fruit Weight : ");
+					double weight = sc.nextDouble();
+				
+					System.out.println("Enter Fruit Name : ");
+					String nm = sc.next();
+					
+					basket[counter++]=new Mango(nm,weight,color);
+				}
+				else {
+					System.out.println("Basket is full");
+				}
+				break;
+			}
+			case 2:{
+				if(counter < basket.length) {
+				
+					System.out.println("Enter Fruit color : ");
+					String color = sc.next();
+				
+					System.out.println("Enter Fruit Weight : ");
+					double weight = sc.nextDouble();
+				
+					System.out.println("Enter Fruit Name : ");
+					String nm = sc.next();
+				
+					basket[counter++]=new Orenge(nm,weight,color);
+				}
+				else {
+					System.out.println("Basket is full");
+				}
+				break;
+			}
+			case 3:{
+				if(counter < basket.length) {
+					
+					System.out.println("Enter Fruit color : ");
+					String color = sc.next();
+					
+					System.out.println("Enter Fruit Weight : ");
+					double weight = sc.nextDouble();
+					
+					System.out.println("Enter Fruit Name : ");
+					String nm = sc.next();
+					
+					basket[counter++]=new Apple(nm,weight,color);
+				}
+				else {
+					System.out.println("Basket is full");
+				}
+				break;
+			}
+			case 4:{
+				for(int i=0;i<basket.length;i++) {
+					if((basket[i].getName()) != null) {
+						System.out.println("Fruit : name - " + basket[i].getName());
+					}else {
+						System.out.println("Fruit : name - " + null);
+						
+					}
+				}
+				break;
+			}
+			case 5 : {
+				for(int i=0;i<basket.length;i++) {
+					if((basket[i].toString())!=null) {
+						System.out.print(basket[i].toString());
+					}
+					if((basket[i].taste())!=null) {
+						System.out.println(", test - " + basket[i].taste());
+					}
+				}
+				break;
+			}
+			case 6 :{
+				System.out.print("Enter fruit index you want to stale : ");
+				int index = sc.nextInt();
+				
+				if(index < basket.length) {
+					basket[index].setIsFresh(false);
+					boolean fru = basket[index].isFresh();
+					System.out.println("Fruit : index - " + index +", isFresh - " + fru);
+				}
+				else {
+					System.out.println("Index is invalid");
+				}
+				break;
+			}
+			case 7 : {
+				System.out.println("Stale fruits name :- ");
+				for(int i=0;i<basket.length;i++) {
+					if(basket[i].isFresh()==false) {
+						System.out.println( basket[i].getName());
+					}
+					else {
+						System.out.println("No Stale fruits");
+					}
+				}
+				break;
+			}
+			default : {
+				System.out.println("invalid choice!!");
+			}
+		 }
+	 }
+ }
+		
+}
+
