@@ -1,0 +1,78 @@
+package com.app.fruits;
+
+public class Fruit {
+	private String color;
+	private double weight;
+	private String name;
+	private boolean isFresh;
+	
+	public Fruit(){
+		
+	}
+	public Fruit(String name,double weight,String color,boolean isfresh) {
+		this.color = color;
+		this.weight = weight;
+		this.name = name;
+		this.isFresh = isfresh;
+	}
+	
+	public  boolean isFresh() {
+		return isFresh;
+	}
+	@Override
+	public String toString() {
+		return "Fruit : Color - " + color + ", Weight - " + weight + " ,Name - " + name + ",isFresh : " + isFresh;
+	}
+	
+	public String taste() {
+		return "No specific teste";
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setIsFresh(boolean isFresh) {
+		this.isFresh = isFresh;
+	}
+}
+
+class Apple extends Fruit{
+	public Apple(){
+		
+	}
+	public Apple(String name,double weight,String color) {
+		super(name,weight,color,true);
+	}
+	
+	@Override
+	public String taste() {
+		return "Sweet n Sour";
+	}
+}
+
+class Orenge extends Fruit{
+	public Orenge() {
+		
+	}
+	public Orenge(String name,double weight,String color) {
+		super(name,weight,color,true);
+	}
+	
+	@Override
+	public String taste() {
+		return "Sweet";
+	}
+}
+class Mango extends Fruit{
+	public Mango() {
+		
+	}
+	public Mango(String name,double weight,String color) {
+		super(name,weight,color,true);
+	}
+	@Override
+	public String taste() {
+		return "Sour";
+	}
+}
