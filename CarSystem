@@ -1,0 +1,49 @@
+package Assignment4;
+
+import java.util.Scanner;
+
+public class CarSystem {
+
+	public static void main(String[] args) {
+	    double totalMiles;
+		double costG;
+		double avgMiles;
+		int parkingFees;
+		int tolls;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Total miles driven per day: ");
+		totalMiles = sc.nextDouble();
+		
+		System.out.println("Enter Cost per gallon of gasoline:");
+		costG = sc.nextDouble();
+		
+		System.out.println("Enter Average miles per gallon:");
+		avgMiles = sc.nextDouble();
+		
+		System.out.println("Enter Parking fees per day:");
+		parkingFees = sc.nextInt();
+		
+		System.out.println("Enter Tolls per day:");
+		tolls = sc.nextInt();
+		
+		double fuelCost = ((totalMiles / avgMiles) * costG);
+		
+		double costPerDay = fuelCost + parkingFees + tolls;
+		
+		System.out.println("Cost per day of driving to work before car pooling:" + costPerDay);
+		
+		System.out.println("Enter number of shared person : ");
+		int person = sc.nextInt();
+		
+		double costPerDayAfterPooling = costPerDay/person;
+		
+		System.out.println("Cost per day of driving to work after car pooling:" + costPerDayAfterPooling);
+		
+		double savedMoney = costPerDay - costPerDayAfterPooling;
+		
+		System.out.println("Money saved after car pooling : " + savedMoney );
+
+	}
+
+}
