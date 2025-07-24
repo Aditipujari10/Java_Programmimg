@@ -1,0 +1,90 @@
+package Assignment5;
+
+import java.util.Scanner;
+public class CreditCard {
+	private int accountNumber;
+	private int beginningBalance;
+	private int totalItemCharge;
+	private int totalCredits;
+	private int creditLimit;
+	private int newBalance;
+	
+	public CreditCard() {
+		
+	}
+	public CreditCard(int accountNumber,int beginningBalance,int totalItemCharge,int totalCredits,int creditLimit) {
+		this.accountNumber = accountNumber;
+		this.beginningBalance = beginningBalance;
+		this.totalItemCharge = totalItemCharge;
+		this.totalCredits = totalCredits;
+		this.creditLimit = creditLimit;
+	}
+	
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public void setBeginningBalance(int beginningBalance) {
+		this.beginningBalance = beginningBalance;
+	}
+	public void setTotalItemCharge(int totalItemCharge) {
+		this.totalItemCharge = totalItemCharge;
+	}
+	public void setTotalCredits(int totalCredits) {
+		this.totalCredits = totalCredits;
+	}
+	public void setCreditLimit(int creditLimit) {
+		this.creditLimit = creditLimit;
+	}
+	
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	public int getBeginningBalance() {
+		return beginningBalance;
+	}
+	public int getTotalItemCharge() {
+		return totalItemCharge ;
+	}
+	public int getTotalCredits() {
+		return totalCredits;
+	}
+	public int getCreditLimit() {
+		return creditLimit;
+	}
+	
+	public void acceptRedord() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter Account Number : ");
+		accountNumber = sc.nextInt();
+		
+		System.out.println("Enter balance at the beginning of the month :");
+		beginningBalance = sc.nextInt();
+		
+		System.out.println("Enter total of all items charged by the customer this month : ");
+		totalItemCharge = sc.nextInt();
+		
+		System.out.println("Enter total of all credits applied to the customer’s account this month : ");
+		totalCredits = sc.nextInt();
+		
+		System.out.println("Enter credit limit :");
+		creditLimit = sc.nextInt();
+	}
+	
+	public double calNewBalance() {
+		newBalance = beginningBalance + totalItemCharge - totalCredits;
+		return newBalance;
+	}
+	
+	public void display() {
+		System.out.println("Account number : " + accountNumber);
+		System.out.println("Balance at the beginning of the month : " + beginningBalance );
+		System.out.println("Total of all items charged by the customer this month : "+ totalItemCharge);
+		System.out.println("Total of all credits applied to the customer’s account this month : "+totalCredits);
+		System.out.println("credit limit : " + creditLimit);
+		System.out.println("New Blance : " + calNewBalance());
+		if(newBalance>creditLimit) {
+			System.out.println("Your credit limit exceeded");
+		}
+	}
+}
+
