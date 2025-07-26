@@ -1,0 +1,14 @@
+package Assignment6;
+
+public class String2 {
+	public static void main(String[] args) {
+		String str1 = "Aditi";
+		int len = str1.length()-1;
+		System.out.print("Reversed String : ");
+		for(int i=len;i>=0;i--) {
+			char ch = str1.charAt(i);
+			System.out.print(ch);
+		}
+		
+	}
+}
