@@ -1,0 +1,18 @@
+package Assignment6;
+
+public class String3 {
+	public static void main(String[] args) {
+		String str1 = "MoM";
+		StringBuilder str2 = new StringBuilder(str1);
+		str2.reverse();
+		
+		if(str1.toString().equals(str2.toString())) {
+			System.out.println(str1 + " is Palindrom");
+			
+		}
+		else {
+			System.out.println(str1+" is not Palindrom");
+		}
+
+	}
+}
