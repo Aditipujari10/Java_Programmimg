@@ -1,0 +1,54 @@
+package Assignment7;
+
+public class Vehical implements Comparable<Vehical> {
+	private int vehicalId;
+	private String model;
+	private String type;
+	private double price;
+	
+	public Vehical() {
+		
+	}
+	public Vehical(int vehicalId,String model,String type,double price) {
+		this.vehicalId = vehicalId;
+		this.model = model;
+		this.type = type;
+		this.price = price;
+	}
+	public int getVehicalId() {
+		return vehicalId;
+	}
+	public void setVehicalId(int vehicalId) {
+		this.vehicalId = vehicalId;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
+	@Override
+	public String toString() {
+		return "VehicalId : " + vehicalId + ", Model : " + model + ", Type : " + type + ", Price : " + price;
+	}
+	
+	@Override
+	public int compareTo(Vehical o) {
+		int diff = Double.compare(this.price,o.price);
+		return diff;
+	}
+	
+}
