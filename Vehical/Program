@@ -1,0 +1,71 @@
+package Assignment7;
+
+import java.io.DataOutputStream;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Comparator;
+import java.util.Collections;
+
+public class Program {
+	
+
+	public static void main(String[] args) {
+		//writeVehical();
+		readVehical();
+		
+	}
+	
+	
+	public static void readVehical() {
+		List<Vehical> list = new ArrayList<Vehical>();
+		try(FileInputStream fin = new FileInputStream("Vehical.db")){
+			try(DataInputStream din = new DataInputStream(fin)){
+				
+				while(true) {
+					Vehical v = new Vehical();
+					v.setVehicalId(din.readInt());
+					v.setModel(din.readUTF());
+					v.setType(din.readUTF());
+					v.setPrice(din.readDouble());
+					list.add(v);
+				}
+			}
+		}
+		catch(Exception e) {
+			
+		}
+		
+		Collections.sort(list,(x,y) -> Double.compare(y.getPrice(),x.getPrice()) );
+		list.forEach(e -> System.out.println(e));
+	}
+	public static void writeVehical() {
+		List<Vehical> list = new ArrayList<>();
+		list.add(new Vehical(1,"Audi","4-Weeler",1000000));
+		list.add(new Vehical(4,"Thar","4-Weeler",-1));
+		list.add(new Vehical(5,"BMW","4-Weeler",200000));
+		list.add(new Vehical(8,"Activa","2-Weeler",40000));
+		list.add(new Vehical(4,"Jeep","4-Weeler",3000000));
+
+		try(FileOutputStream fout = new FileOutputStream("Vehical.db")){
+			try(DataOutputStream dout = new DataOutputStream(fout)){
+				for(Vehical v : list) {
+					if(v.getPrice() > 0) {
+						dout.writeInt(v.getVehicalId());
+						dout.writeUTF(v.getModel());
+						dout.writeUTF(v.getType());
+						dout.writeDouble(v.getPrice());
+					}
+				}
+			}
+			System.out.println("Vehical Saved");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
