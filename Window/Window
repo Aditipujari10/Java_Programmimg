@@ -1,0 +1,43 @@
+package Program.p6;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+
+public class Window extends JFrame{
+	JList<String> listBox;
+	JScrollPane scrollPane;
+	
+	public Window() {
+		super("ListBox");
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setLayout(null);
+		
+		DefaultListModel<String> defaultListModel= new DefaultListModel<>();
+		defaultListModel.addElement("DOSA");
+		defaultListModel.addElement("IDALI");
+		defaultListModel.addElement("POHA");
+		defaultListModel.addElement("SAMOSA");
+		defaultListModel.addElement("KACHORI");
+		defaultListModel.addElement("UPAMA");
+		defaultListModel.addElement("APPE");
+		defaultListModel.addElement("KHICHADI");
+		
+		
+		listBox = new JList<>(defaultListModel);
+//		listBox.setBounds(50, 50, 80, 50);
+//		this.add(listBox);
+		
+		
+		scrollPane = new JScrollPane(listBox);
+		scrollPane.setBounds(50, 50, 80, 100);
+		this.add(scrollPane);
+		
+		listBox.addListSelectionListener(e -> {
+			if(e.getValueIsAdjusting()) {
+				System.out.println("You Select : " + listBox.getSelectedValue());
+			}
+		});
+	}
+}
