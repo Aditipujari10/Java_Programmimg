@@ -1,0 +1,134 @@
+import java.util.Scanner;
+
+class Matrix {
+    int rows, cols;
+    int[][] data;
+
+    Matrix(int r, int c) {
+        rows = r;
+        cols = c;
+        data = new int[rows][cols];
+    }
+
+    void input(Scanner sc) {
+        System.out.println("Enter elements of " + rows + "x" + cols + " matrix:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i][j] = sc.nextInt();
+            }
+        }
+    }
+
+    void display() {
+        for (int[] row : data) {
+            for (int val : row) {
+                System.out.print(val + "\t");
+            }
+            System.out.println();
+        }
+    }
+
+    Matrix add(Matrix m) {
+        Matrix result = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.data[i][j] = data[i][j] + m.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    Matrix subtract(Matrix m) {
+        Matrix result = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.data[i][j] = data[i][j] - m.data[i][j];
+            }
+        }
+        return result;
+    }
+
+    Matrix multiply(Matrix m) {
+        Matrix result = new Matrix(rows, m.cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < m.cols; j++) {
+                for (int k = 0; k < cols; k++) {
+                    result.data[i][j] += data[i][k] * m.data[k][j];
+                }
+            }
+        }
+        return result;
+    }
+
+    Matrix scalarMultiply(int scalar) {
+        Matrix result = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.data[i][j] = data[i][j] * scalar;
+            }
+        }
+        return result;
+    }
+
+    Matrix transpose() {
+        Matrix result = new Matrix(cols, rows);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.data[j][i] = data[i][j];
+            }
+        }
+        return result;
+    }
+}
+
+public class Matrix {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Create and input first matrix
+        System.out.print("Enter rows and columns for first matrix: ");
+        int r1 = sc.nextInt();
+        int c1 = sc.nextInt();
+        Matrix m1 = new Matrix(r1, c1);
+        m1.input(sc);
+
+        // Create and input second matrix
+        System.out.print("Enter rows and columns for second matrix: ");
+        int r2 = sc.nextInt();
+        int c2 = sc.nextInt();
+        Matrix m2 = new Matrix(r2, c2);
+        m2.input(sc);
+
+        System.out.println("\nMatrix 1:");
+        m1.display();
+        System.out.println("\nMatrix 2:");
+        m2.display();
+
+        if (r1 == r2 && c1 == c2) {
+            System.out.println("\nAddition:");
+            m1.add(m2).display();
+
+            System.out.println("\nSubtraction:");
+            m1.subtract(m2).display();
+        } else {
+            System.out.println("\nAddition/Subtraction not possible (size mismatch).");
+        }
+
+        if (c1 == r2) {
+            System.out.println("\nMultiplication:");
+            m1.multiply(m2).display();
+        } else {
+            System.out.println("\nMultiplication not possible (columns of first != rows of second).");
+        }
+
+        System.out.print("\nEnter scalar value for multiplication: ");
+        int scalar = sc.nextInt();
+        System.out.println("\nScalar Multiplication of Matrix 1:");
+        m1.scalarMultiply(scalar).display();
+
+        System.out.println("\nTranspose of Matrix 1:");
+        m1.transpose().display();
+
+        sc.close();
+    }
+}
